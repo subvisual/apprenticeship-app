@@ -1,0 +1,29 @@
+:root {
+  padding-top: 70px;
+}
+
+.card.applicant {
+  width: 200px;
+  min-width: 200px;
+}
+
+.ui.items .item.disabled {
+  opacity: 0.5;
+}
+
+.questions {
+  margin-top: 24px;
+}
+
+.questions > .question:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+.question .body {
+  margin-bottom: 4px;
+
+  font-weight: bold;
+}
+
+.question .answer {
+}

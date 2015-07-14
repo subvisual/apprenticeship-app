@@ -1,0 +1,21 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+urigo:angular
+angularui:angular-ui-router
+pbastowski:angular-babel
+aldeed:collection2
+gabrielpoca:accounts-headquarters
+nimble:restivus
+semantic:ui
+flemay:less-autoprefixer
+jparker:gravatar
+iandouglas:accounts-ui-semantic-ui
+gabrielpoca:state-machine
+email
+matb33:collection-hooks
+underscore
