@@ -2,18 +2,33 @@
   <div class="ui container">
     <h1 class="ui header">Applications</h1>
     <div class="ui hidden divider"></div>
-    <div class="ui toggle checkbox">
-      <label>Show deleted</label>
-      <input ng-change="ctrl.toggleDeleted()"
-             ng-model="ctrl.showDeleted"
-             type="checkbox">
-    </div>
-    <div class="ui divider"></div>
   </div>
+  <div class="ui two column grid container">
+    <div class="row">
+      <div class="column">
+        <div class="ui icon input">
+          <input ng-model="ctrl.searchText"
+                 type="text"
+                 placeholder="Search...">
+          <i class="search icon"></i>
+        </div>
+      </div>
+      <div class="column">
+        <div class="ui toggle checkbox">
+          <input id="fun"
+                 ng-model="ctrl.showDeleted"
+                 ng-change="ctrl.toggleDeleted()"
+                 type="checkbox">
+            <label for="fun">Show deleted</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider"></div>
   <div class="ui very relaxed divided items container">
     <div class="item"
          ng-class="{'disabled': application.deleted}"
-         ng-repeat="application in ctrl.applications">
+         ng-repeat="application in ctrl.applications | filter:ctrl.searchText">
       <div class="ui tiny image">
         <img src="{{ ctrl.pictureForApplication(application) }}">
       </div>

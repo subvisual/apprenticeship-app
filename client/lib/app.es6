@@ -5,15 +5,15 @@ angular
 function Router($stateProvider, $urlRouterProvider, $locationProvider) {
   $locationProvider.html5Mode(true);
 
-  $urlRouterProvider.otherwise('/applications');
-
   $stateProvider
-    .state('application', {
+    .state('applicationsShow', {
+      url: '/applications/:applicationId',
+      template: '<detailed-application/></detailed-application/>'
+    })
+    .state('applications', {
       url: '/applications',
       template: '<applications></applications>'
-    })
-    .state('show.applications', {
-      url: '/applications/:id',
-      template: '<applications></applications>'
     });
+
+  $urlRouterProvider.otherwise('/applications');
 }

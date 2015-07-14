@@ -17,10 +17,7 @@ function applications() {
 function ApplicationsCtrl($meteor) {
   console.log(this);
   let ctrl = this;
-
   var applicationsHandler = false;
-
-  subscribeApplications();
 
   ctrl.showDeleted = false;
   ctrl.toggleDeleted = toggleDeleted;
@@ -33,6 +30,8 @@ function ApplicationsCtrl($meteor) {
   ctrl.isHold = isHold;
   ctrl.isRejected = isRejected;
   ctrl.pictureForApplication = pictureForApplication;
+
+  subscribeApplications(ctrl.showDeleted);
 
   function remove(application) {
     Meteor.call('deleteApplication', application._id);
