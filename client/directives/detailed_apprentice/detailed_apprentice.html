@@ -4,6 +4,20 @@
       <img src="{{ apprentice.pictureUrl }}" class="ui circular image">
       {{ apprentice.name }}
     </h2>
-    <p>Week 1</p>
+
+    <ul>
+      {{#each weekly}}
+      <li>{{ mentor }} </li>
+      {{/each}}
+    </ul>
+
+    <p>New weekly planning</p>
+
+    {{> quickForm
+        omitFields="apprenticeId"
+        id="weeklyInsert"
+        type="method"
+        meteormethod="insertWeekly"
+        collection="Weekly" }}
   </div>
 </template>

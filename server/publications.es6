@@ -25,3 +25,9 @@ Meteor.publish('apprentice', function(id) {
 
   return Apprentices.find({ _id: id });
 });
+
+Meteor.publish('weekly', function(apprenticeId) {
+  if (!this.userId) return;
+
+  return Weekly.find({ apprenticeId: apprenticeId });
+});

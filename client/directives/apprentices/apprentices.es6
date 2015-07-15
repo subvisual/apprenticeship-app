@@ -14,7 +14,6 @@ Template.Apprentices.helpers({
 Template.Apprentices.events({
   'click .card.apprentice': function(e, tpl) {
     e.preventDefault();
-    console.log(`/apprentices/${this._id}`);
     FlowRouter.go(`/apprentices/${this._id}`);
   }
 });

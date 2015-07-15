@@ -39,3 +39,5 @@ ApprenticesSchema = {
     }
   }
 };
+
+Apprentices.attachSchema(ApprenticesSchema);
