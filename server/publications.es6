@@ -31,3 +31,9 @@ Meteor.publish('weekly', function(apprenticeId) {
 
   return Weekly.find({ apprenticeId: apprenticeId });
 });
+
+Meteor.publish('users', function() {
+  if (!this.userId) return;
+
+  return Meteor.users.find({});
+});

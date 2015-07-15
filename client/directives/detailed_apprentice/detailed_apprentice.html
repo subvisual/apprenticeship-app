@@ -5,11 +5,13 @@
       {{ apprentice.name }}
     </h2>
 
-    <ul>
-      {{#each weekly}}
-      <li>{{ mentor }} </li>
-      {{/each}}
-    </ul>
+    {{#each weekly}}
+      <div class="ui header">
+        Week {{ weekNumber }}
+      </div>
+      <p>{{ userNameForId mentorId }}</p>
+      <p>{{ details }}</p>
+    {{/each}}
 
     {{> newWeekly}}
   </div>

@@ -4,11 +4,11 @@ WeeklySchema = {
   apprenticeId: {
     type: String
   },
-  week: {
+  weekNumber: {
     type: Number,
     label: 'Week number'
   },
-  mentor: {
+  mentorId: {
     type: String,
     label: 'Mentor',
     autoform: {
