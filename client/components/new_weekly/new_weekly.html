@@ -1,4 +1,4 @@
-<template name="newWeeklyModal">
+<template name="newWeekly">
   <button
      id="new_weekly_open"
      class="ui button">
@@ -6,10 +6,10 @@
   </button>
 
   {{# autoForm
-  id="weeklyInsert"
-  type="method"
-  meteormethod="insertWeekly"
-  collection="Weekly" }}
+    id="weeklyInsert"
+    type="method"
+    meteormethod="insertWeekly"
+    collection="Weekly" }}
 
   <div class="ui meteor-modal {{ modalState }}">
     <div class="ui meteor-modal-content modal active">

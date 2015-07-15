@@ -15,11 +15,7 @@ AutoForm.hooks({
   }
 });
 
-Template.newWeeklyModal.onCreated(function() {
-  this.newWeeklyOpen = new ReactiveVar(false);
-});
-
-Template.newWeeklyModal.events({
+Template.newWeekly.events({
   'click #new_weekly_open': function(e, tpl) {
     Session.set('newWeeklyOpen', true);
   },
@@ -31,7 +27,7 @@ Template.newWeeklyModal.events({
   }
 });
 
-Template.newWeeklyModal.helpers({
+Template.newWeekly.helpers({
   modalState: function() {
     if (Session.get('newWeeklyOpen'))
       return 'open';
