@@ -10,3 +10,11 @@ Template.Apprentices.helpers({
     return moment(date).format('DD/MM/YYYY');
   }
 });
+
+Template.Apprentices.events({
+  'click .card.apprentice': function(e, tpl) {
+    e.preventDefault();
+    console.log(`/apprentices/${this._id}`);
+    FlowRouter.go(`/apprentices/${this._id}`);
+  }
+});

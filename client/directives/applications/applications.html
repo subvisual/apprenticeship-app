@@ -3,25 +3,23 @@
     <h1 class="ui header">Applications</h1>
     <div class="ui hidden divider"></div>
   </div>
-  <div class="ui three column grid container">
-    <div class="row">
-      <div class="column">
+  <div class="ui grid container">
+    <div class="eight wide column">
+    </div>
+    <div class="ui right aligned four wide column">
+      <div id="show_all" class="ui toggle checkbox">
+        <input type="checkbox" name="show_all">
+        <label>Show all</label>
       </div>
-      <div class="column">
-        <div id="show_all" class="ui toggle checkbox">
-          <input type="checkbox" name="show_all">
-          <label>Show all</label>
-        </div>
-      </div>
-      <div class="column">
-        <div id="show_deleted" class="ui toggle checkbox">
-          <input type="checkbox" name="show_deleted">
-          <label>Show deleted</label>
-        </div>
+    </div>
+    <div class="ui right aligned four wide column">
+      <div id="show_deleted" class="ui toggle checkbox">
+        <input type="checkbox" name="show_deleted">
+        <label>Show deleted</label>
       </div>
     </div>
   </div>
-  <div class="ui divider"></div>
+  <div class="ui divider container"></div>
   <div class="ui very relaxed divided items container">
     {{#unless applications.count}}
       <div class="item">

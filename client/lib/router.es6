@@ -18,8 +18,14 @@ apprenticeRoutes.route('/', {
   }
 });
 
+apprenticeRoutes.route('/:id', {
+  action: () => {
+    FlowLayout.render('Layout', { content: 'DetailedApprentice' });
+  }
+});
+
 FlowRouter.route('/', {
-  triggersEnter: function(context, redirect) {
+  triggersEnter: (context, redirect) => {
     redirect('/apprentices');
   }
 });

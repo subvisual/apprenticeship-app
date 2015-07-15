@@ -18,3 +18,10 @@ Meteor.publish('apprentices', function() {
 
   return Apprentices.find({});
 });
+
+
+Meteor.publish('apprentice', function(id) {
+  if (!this.userId) return;
+
+  return Apprentices.find({ _id: id });
+});
