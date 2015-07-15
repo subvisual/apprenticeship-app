@@ -70,7 +70,18 @@ Applications.onHoldState = function(obj) {
 
 Meteor.methods({
   acceptApplication: function(id) {
-    return Applications.toAcceptedState({ _id: id });
+    Applications.toAcceptedState({ _id: id });
+
+    var application = Applications.findOne(id);
+
+    return Apprentices.insert({
+      name: application.name,
+      email: application.email,
+      phoneNumber: application.phoneNumber,
+      pictureUrl: application.pictureUrl,
+      startedAt: new Date,
+      endedAt: new Date + 7 * 10
+    });
   },
   rejectApplication: function(id) {
     return Applications.toRejectedState({ _id: id });

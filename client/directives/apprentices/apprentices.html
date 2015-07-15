@@ -1,0 +1,28 @@
+<template name="Apprentices">
+  <div class="ui container">
+    <h1 class="ui header">Apprentices</h1>
+    <div class="ui hidden divider"></div>
+  </div>
+  <div class="ui link cards container">
+    {{#each apprentices}}
+      <div class="card">
+        <div class="image">
+          <a class="ui red right corner label">
+            <i class="heart icon"></i>
+          </a>
+          <img src="{{ pictureUrl }}">
+        </div>
+        <div class="content">
+          <div class="header">{{ name }}</div>
+        </div>
+        <div class="extra content">
+          <span>
+            <i class="calendar icon"></i>
+            {{ prettyDate endedAt }}
+            - {{ prettyDate startedAt }}
+          </span>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>

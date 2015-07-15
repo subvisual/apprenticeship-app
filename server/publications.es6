@@ -12,3 +12,9 @@ Meteor.publish('applications', function(options = {}) {
 
   return Applications.find(args);
 });
+
+Meteor.publish('apprentices', function() {
+  if (!this.userId) return;
+
+  return Apprentices.find({});
+});

@@ -8,9 +8,19 @@ applicationRoutes.route('/', {
   }
 });
 
+var apprenticeRoutes = FlowRouter.group({
+  prefix: '/apprentices'
+});
+
+apprenticeRoutes.route('/', {
+  action: () => {
+    FlowLayout.render('Layout', { content: 'Apprentices' });
+  }
+});
+
 FlowRouter.route('/', {
   triggersEnter: function(context, redirect) {
-    redirect('/applications');
+    redirect('/apprentices');
   }
 });
 
