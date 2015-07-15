@@ -5,9 +5,6 @@
 # but you can also edit it by hand.
 
 meteor-platform
-urigo:angular
-angularui:angular-ui-router
-pbastowski:angular-babel
 aldeed:collection2
 gabrielpoca:accounts-headquarters
 nimble:restivus
@@ -19,3 +16,9 @@ gabrielpoca:state-machine
 email
 matb33:collection-hooks
 underscore
+mquandalle:bower
+meteorhacks:flow-router
+grigio:babel
+meteorhacks:flow-layout
+reactive-var
+momentjs:moment

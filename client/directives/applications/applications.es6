@@ -1,80 +1,51 @@
-angular
-  .module('ap')
-  .directive('applications', applications)
-  .controller('ApplicationsCtrl', ApplicationsCtrl);
+Template.Applications.onCreated(function() {
+  this.showDeleted = new ReactiveVar(false);
+  this.showAll = new ReactiveVar(false);
 
-function applications() {
-  return {
-    restrict: 'E',
-    replace: true,
-    templateUrl: 'client/directives/applications/applications.ng.html',
-    controllerAs: 'ctrl',
-    controller: 'ApplicationsCtrl',
-    bindToController: true
-  };
-}
+  this.autorun(() => {
+    var args = {
+      showDeleted: Template.instance().showDeleted.get()
+    };
 
-function ApplicationsCtrl($meteor) {
-  console.log(this);
-  let ctrl = this;
-  var applicationsHandler = false;
+    console.log(args);
 
-  ctrl.showDeleted = false;
-  ctrl.toggleDeleted = toggleDeleted;
+    this.subscribe('applications', args);
+  });
+});
 
-  ctrl.remove = remove;
-  ctrl.accept = accept;
-  ctrl.reject = reject;
-
-  ctrl.isAccepted = isAccepted;
-  ctrl.isHold = isHold;
-  ctrl.isRejected = isRejected;
-  ctrl.pictureForApplication = pictureForApplication;
-
-  subscribeApplications(ctrl.showDeleted);
-
-  function remove(application) {
-    Meteor.call('deleteApplication', application._id);
-  }
-
-  function accept(application) {
-    Meteor.call('acceptApplication', application._id);
-  }
-
-  function reject(application) {
-    Meteor.call('rejectApplication', application._id);
-  }
-
-  function toggleDeleted() {
-    subscribeApplications(ctrl.showDeleted);
-  }
-
-  function isHold(application) {
-    return Applications.isHoldState(application);
-  }
-
-  function isAccepted(application) {
-    return Applications.isAcceptedState(application);
-  }
-
-  function isRejected(application) {
-    return Applications.isRejectedState(application);
-  }
-
-  function pictureForApplication(application) {
+Template.Applications.helpers({
+  applications: function() {
+    if (Template.instance().showAll.get())
+      return Applications.find();
+    else
+      return Applications.findHoldState();
+  },
+  pictureForApplication: function(application) {
     return application.pictureUrl || 'http://placehold.it/200x200';
+  },
+  prettyDate: function(date) {
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+  },
+  applicationExtraClass: function(application) {
+    if (application.deleted)
+      return 'disabled';
   }
+});
 
-  function subscribeApplications(showDeleted = false) {
-    if (applicationsHandler)
-      applicationsHandler.stop();
-
-    $meteor.subscribe('applications', {
-      showDeleted: showDeleted
-    })
-      .then(function(handler) {
-        ctrl.applications = $meteor.collection(Applications);
-        applicationsHandler = handler;
-      });
+Template.Applications.events({
+  'click #show_all': function(e, tpl) {
+    tpl.showAll.set(!tpl.showAll.get());
+  },
+  'click #show_deleted': function(e, tpl) {
+    tpl.showDeleted.set(!tpl.showDeleted.get());
+  },
+  'click .application.accept': function(e, tpl) {
+    Meteor.call('acceptApplication', this._id);
+  },
+  'click .application.reject': function(e, tpl) {
+    Meteor.call('rejectApplication', this._id);
+  },
+  'click .application.delete': function(e, tpl) {
+    Metoer.call('deleteApplication', this._id);
   }
-}
+});

@@ -1,0 +1,12 @@
+{
+  "name": "apprenticeship-app",
+  "version": "0.0.1",
+  "dependencies": {},
+  "ignoredDependencies": [
+    "angular",
+    "angular-mocks",
+    "jquery",
+    "semantic"
+  ],
+  "private": true
+}

@@ -1,19 +1,17 @@
-angular
-  .module('ap', ['angular-meteor', 'ui.router'])
-  .config(Router);
+var applicationRoutes = FlowRouter.group({
+  prefix: '/applications'
+});
 
-function Router($stateProvider, $urlRouterProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
+applicationRoutes.route('/', {
+  action: () => {
+    FlowLayout.render('Layout', { content: 'Applications' });
+  }
+});
 
-  $stateProvider
-    .state('applicationsShow', {
-      url: '/applications/:applicationId',
-      template: '<detailed-application/></detailed-application/>'
-    })
-    .state('applications', {
-      url: '/applications',
-      template: '<applications></applications>'
-    });
+FlowRouter.route('/', {
+  triggersEnter: function(context, redirect) {
+    redirect('/applications');
+  }
+});
 
-  $urlRouterProvider.otherwise('/applications');
-}
+FlowLayout.setRoot('body');

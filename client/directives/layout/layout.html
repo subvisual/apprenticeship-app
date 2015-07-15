@@ -1,0 +1,16 @@
+<template name="Layout">
+  {{#if currentUser}}
+    {{> navBar }}
+    {{> Template.dynamic template=content }}
+  {{else}}
+    <div class="ui middle center aligned grid">
+      <div class="column fixed-size">
+        <h2 class="ui center aligned icon header">
+          <i class="circular spy icon"></i>
+          You need to sign in first.
+        </h2>
+        {{> loginButtons }}
+      </div>
+    </div>
+  {{/if}}
+</template>

@@ -1,0 +1,107 @@
+<template name="Applications">
+  <div class="ui container">
+    <h1 class="ui header">Applications</h1>
+    <div class="ui hidden divider"></div>
+  </div>
+  <div class="ui three column grid container">
+    <div class="row">
+      <div class="column">
+      </div>
+      <div class="column">
+        <div id="show_all" class="ui toggle checkbox">
+          <input type="checkbox" name="show_all">
+          <label>Show all</label>
+        </div>
+      </div>
+      <div class="column">
+        <div id="show_deleted" class="ui toggle checkbox">
+          <input type="checkbox" name="show_deleted">
+          <label>Show deleted</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="ui divider"></div>
+  <div class="ui very relaxed divided items container">
+    {{#unless applications.count}}
+      <div class="item">
+        Good work! There are no application to be seen.
+      </div>
+    {{/unless}}
+    {{#each applications}}
+    <div class="item {{ applicationExtraClass this }}">
+      <div class="ui tiny image">
+        <img src="{{ pictureForApplication this }}">
+      </div>
+      <div class="content">
+        <div class="ui header">
+          {{ name }}
+          {{#if isAcceptedState this}}
+          <a class="ui teal horizontal small label">
+            Accepted
+          </a>
+          {{/if}}
+          {{#if isHoldState this}}
+          <a class="ui yellow horizontal small label">
+            On Hold
+          </a>
+          {{/if}}
+          {{#if isRejectedState this}}
+          <a class="ui red horizontal small label">
+            Rejected
+          </a>
+          {{/if}}
+        </div>
+
+        <div class="meta">
+          <span>Submitted at {{ prettyDate createdAt }}</span>
+        </div>
+        <div class="meta">
+          <span class="email">{{ email }}</span>
+          -
+          <span class="phoneNumber">{{ phoneNumber }}</span>
+        </div>
+
+        <div class="description">
+          <section class="questions">
+            {{#each application.other}}
+            <article class="question">
+              <div class="body">
+                {{ question }}
+              </div>
+              <div class="answer">
+                {{ answer }}
+              </div>
+            </article>
+            {{/each}}
+          </section>
+        </div>
+
+        <div class="extra">
+          <a class="ui right floated primary button" href="mailto:{{ email }}">
+            Send Email
+            <i class="right mail icon"></i>
+          </a>
+          {{#unless isAcceptedState this}}
+          <a class="ui right floated button application accept">
+            Accept
+            <i class="right thumbs up icon"></i>
+          </a>
+          {{/unless}}
+          {{#unless isRejectedState this}}
+          <a class="ui right floated button application reject">
+            Reject
+            <i class="right thumbs down icon"></i>
+          </a>
+          {{/unless}}
+          {{#unless deleted}}
+          <a class="ui icon right floated button application delete">
+            <i class="trash icon"></i>
+          </a>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</template>
