@@ -11,13 +11,6 @@
       {{/each}}
     </ul>
 
-    <p>New weekly planning</p>
-
-    {{> quickForm
-        omitFields="apprenticeId"
-        id="weeklyInsert"
-        type="method"
-        meteormethod="insertWeekly"
-        collection="Weekly" }}
+    {{> newWeeklyModal}}
   </div>
 </template>

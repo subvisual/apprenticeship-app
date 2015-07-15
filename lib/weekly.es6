@@ -4,6 +4,10 @@ WeeklySchema = {
   apprenticeId: {
     type: String
   },
+  week: {
+    type: Number,
+    label: 'Week number'
+  },
   mentor: {
     type: String,
     label: 'Mentor',

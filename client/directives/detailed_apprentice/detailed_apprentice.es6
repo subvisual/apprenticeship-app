@@ -1,14 +1,3 @@
-AutoForm.hooks({
-  weeklyInsert: {
-    before: {
-      method: function(doc) {
-        doc.apprenticeId = FlowRouter.getParam('id');
-        return doc;
-      }
-    }
-  }
-});
-
 Template.DetailedApprentice.onCreated(function() {
   this.autorun(() => {
     this.subscribe('apprentice', FlowRouter.getParam('id'));

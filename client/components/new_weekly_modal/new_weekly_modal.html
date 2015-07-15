@@ -1,0 +1,43 @@
+<template name="newWeeklyModal">
+  <button
+     id="new_weekly_open"
+     class="ui button">
+    New weekly
+  </button>
+
+  {{# autoForm
+  id="weeklyInsert"
+  type="method"
+  meteormethod="insertWeekly"
+  collection="Weekly" }}
+
+  <div class="ui meteor-modal {{ modalState }}">
+    <div class="ui meteor-modal-content modal active">
+      <i class="close icon"></i>
+      <div class="header">
+        New Week Plan
+      </div>
+      <div class="ui content">
+        <div class="ui form">
+          {{> afQuickField name='week'}}
+          {{> afQuickField name='mentor'}}
+          {{> afQuickField name='startedAt'}}
+          {{> afQuickField name='details'}}
+        </div>
+      </div>
+      <div class="actions">
+        <div class="ui black deny button">
+          Nope
+        </div>
+        <button
+           type="submit"
+           class="ui positive right labeled icon button">
+          Yep, that's me
+          <i class="checkmark icon"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{/autoForm}}
+</template>
