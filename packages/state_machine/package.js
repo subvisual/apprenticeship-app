@@ -5,8 +5,9 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.use('underscore');
+  api.use('templating');
 
-  api.addFiles('lib/state_machine.js');
+  api.addFiles('state_machine.js');
 
   api.export('StateMachine');
 });

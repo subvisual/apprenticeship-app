@@ -36,12 +36,3 @@ WeeklySchema = {
 };
 
 Weekly.attachSchema(WeeklySchema);
-
-Meteor.methods({
-  insertWeekly: function(doc) {
-    console.log(doc);
-    if (!this.userId) throw 'Not logged in!';
-
-    return Weekly.insert(doc);
-  }
-});

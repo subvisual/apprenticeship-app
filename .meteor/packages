@@ -24,3 +24,6 @@ reactive-var
 momentjs:moment
 fabienb4:autoform-semantic-ui
 aldeed:autoform
+apprenticeship:apprentices
+apprenticeship:applications
+apprenticeship:weekly

@@ -14,6 +14,10 @@ Template.DetailedApprentice.helpers({
     return Weekly.find({ apprenticeId: FlowRouter.getParam('id') });
   },
   userNameForId: function(id) {
-    return Meteor.users.findOne(id).name;
+    var user = Meteor.users.findOne({ _id: id }).name;
+    console.log(user);
+
+    if (user)
+      return user.name;
   }
 });
