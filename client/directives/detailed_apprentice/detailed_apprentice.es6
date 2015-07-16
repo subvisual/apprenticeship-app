@@ -11,13 +11,15 @@ Template.DetailedApprentice.helpers({
     return Apprentices.findOne(FlowRouter.getParam('id'));
   },
   weekly: function() {
-    return Weekly.find({ apprenticeId: FlowRouter.getParam('id') });
+    return Weekly.find(
+      { apprenticeId: FlowRouter.getParam('id') },
+      { sort: { weekNumber: 1 }}
+    );
   },
   userNameForId: function(id) {
-    var user = Meteor.users.findOne({ _id: id }).name;
-    console.log(user);
+    var user = Meteor.users.findOne(id);
 
     if (user)
-      return user.name;
+      return user.profile.name;
   }
 });

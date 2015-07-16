@@ -29,7 +29,10 @@ Meteor.publish('apprentice', function(id) {
 Meteor.publish('weekly', function(apprenticeId) {
   if (!this.userId) return;
 
-  return Weekly.find({ apprenticeId: apprenticeId });
+  return Weekly.find(
+    { apprenticeId: apprenticeId },
+    { sort: { weekNumber: 1 }}
+  );
 });
 
 Meteor.publish('users', function() {

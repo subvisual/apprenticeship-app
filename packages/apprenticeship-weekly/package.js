@@ -9,7 +9,11 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
-  api.addFiles('weekly.js');
+  api.use('aldeed:collection2');
+  api.use('grigio:babel');
+
+  api.addFiles('weekly.es6');
+  api.addFiles('exports.js');
 
   api.export('Weekly');
   api.export('WeeklySchema');
