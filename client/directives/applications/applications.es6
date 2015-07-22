@@ -7,8 +7,6 @@ Template.Applications.onCreated(function() {
       showDeleted: Template.instance().showDeleted.get()
     };
 
-    console.log(args);
-
     this.subscribe('applications', args);
   });
 });

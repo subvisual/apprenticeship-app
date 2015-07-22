@@ -41,7 +41,6 @@ StateMachine.defineStates = function(collection, schema, options) {
     return function(params) {
       params = params || {};
       _.defaults(params, { state: state });
-      console.log(params);
       return collection.find(params);
     };
   }

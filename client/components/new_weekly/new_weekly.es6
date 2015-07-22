@@ -1,3 +1,5 @@
+Meteor.startup(() => Session.set('newWeeklyOpen', false));
+
 AutoForm.hooks({
   weeklyInsert: {
     after: {
@@ -14,7 +16,6 @@ AutoForm.hooks({
 });
 
 Template.newWeekly.onCreated(function() {
-  Session.set('newWeeklyOpen', false);
   this.modalOpen = new ReactiveVar(false);
 
   this.autorun(() => {
