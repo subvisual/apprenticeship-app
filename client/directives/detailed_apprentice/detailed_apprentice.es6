@@ -7,8 +7,10 @@ Template.DetailedApprentice.onCreated(function() {
 });
 
 Template.DetailedApprentice.helpers({
-  apprentice: function() {
-    return Apprentices.findOne(FlowRouter.getParam('id'));
+  defaultDoc: function() {
+    return {
+      apprenticeId: FlowRouter.getParam('id')
+    };
   },
   weekly: function() {
     return Weekly.find(

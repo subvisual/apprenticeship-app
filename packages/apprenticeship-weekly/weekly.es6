@@ -9,8 +9,8 @@ WeeklySchema = {
     label: 'Week number',
     unique: true,
     custom: function() {
-      if (!Meteor.isClient || (Meteor.isClient && !this.isSet))
-        return;
+      if (!Meteor.isClient || (Meteor.isClient && !this.isSet) || this.isUpdate)
+        return true;
 
       var apprenticeId = this.field('apprenticeId').value;
 
@@ -18,7 +18,7 @@ WeeklySchema = {
         'weekNotPlanned',
         apprenticeId,
         this.value,
-        (err, result) => {
+        function(err, result) {
           if (err || !result) {
             Weekly.simpleSchema()
               .namedContext('weeklyInsert')

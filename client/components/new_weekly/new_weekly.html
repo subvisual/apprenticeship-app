@@ -1,43 +1,48 @@
 <template name="newWeekly">
   <button
      id="new_weekly_open"
-     class="fluid ui button">
-    New weekly
+     class="ui {{ buttonClasses }} button">
+    {{> UI.contentBlock}}
   </button>
 
-  {{# autoForm
-    id="weeklyInsert"
-    type="method"
-    meteormethod="insertWeekly"
-    collection="Weekly" }}
+  {{#if modalOpen}}
+    {{# autoForm
+      id="weeklyInsert"
+      doc=doc
+      type=autoFormType
+      meteormethod=autoFormMethod
+      collection="Weekly" }}
 
-  <div class="ui meteor-modal {{ modalState }}">
-    <div class="ui meteor-modal-content modal active">
-      <i class="close icon"></i>
-      <div class="header">
-        New Week Plan
-      </div>
-      <div class="ui content">
-        <div class="ui form">
-          {{> afQuickField name='weekNumber'}}
-          {{> afQuickField name='mentorId'}}
-          {{> afQuickField name='startedAt'}}
-          {{> afQuickField name='details'}}
+      <div class="ui meteor-modal {{ modalState }}">
+        <div class="ui meteor-modal-content modal active">
+          <i class="close icon"></i>
+          <div class="header">
+            New Week Plan
+          </div>
+          <div class="ui content">
+            <div class="ui form">
+              {{> afQuickField name='weekNumber'}}
+              {{> afQuickField name='mentorId'}}
+              {{> afQuickField name='startedAt'}}
+              {{> afQuickField name='details'}}
+              <div style="visibility: hidden">
+                {{> afQuickField name='apprenticeId'}}
+              </div>
+            </div>
+          </div>
+          <div class="actions">
+            <div class="ui black deny button">
+              Nope, cancel
+            </div>
+            <button
+              type="submit"
+              class="ui positive right labeled icon button">
+              This looks right
+              <i class="checkmark icon"></i>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="actions">
-        <div class="ui black deny button">
-          Nope
-        </div>
-        <button
-           type="submit"
-           class="ui positive right labeled icon button">
-          Yep, that's me
-          <i class="checkmark icon"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  {{/autoForm}}
+    {{/autoForm}}
+  {{/if}}
 </template>
