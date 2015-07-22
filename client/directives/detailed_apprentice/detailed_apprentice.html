@@ -6,13 +6,20 @@
     </h2>
 
     {{#each weekly}}
+    <div class="ui vertical segment">
       <div class="ui header">
         Week {{ weekNumber }}
       </div>
       <p><b>Mentor: </b>{{ userNameForId mentorId }}</p>
       <p>{{ details }}</p>
+      <button class="ui red basic button remove">
+        Remove
+      </button>
+      </div>
     {{/each}}
 
-    {{> newWeekly}}
+    <div class="ui vertical segment">
+      {{> newWeekly}}
+    </div>
   </div>
 </template>

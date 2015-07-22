@@ -23,3 +23,9 @@ Template.DetailedApprentice.helpers({
       return user.profile.name;
   }
 });
+
+Template.DetailedApprentice.events({
+  'click .button.remove': function(e, tpl) {
+    Meteor.call('removeWeekly', this._id);
+  }
+});

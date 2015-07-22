@@ -26,5 +26,10 @@ Meteor.methods({
     if (!this.userId) throw 'Not logged in!';
 
     return Weekly.insert(doc);
+  },
+  removeWeekly: function(id) {
+    if (!this.userId) throw 'Not logged in!';
+
+    return Weekly.remove({ _id: id });
   }
 });
