@@ -1,9 +1,10 @@
 <template name="navBar">
   <div class="ui fixed main menu">
-    <a class="active item" href="/apprentices">
+    <div class="item">Apprenticeship</div>
+    <a class="{{isActivePath path='/apprentices'}} item" href="/apprentices">
       Apprentices
     </a>
-    <a class="active item" href="/applications">
+    <a class="{{isActivePath path='/applications'}} item" href="/applications">
       Applications
     </a>
     <div class="right menu">
