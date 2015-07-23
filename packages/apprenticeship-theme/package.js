@@ -10,7 +10,6 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.2');
 
   api.use('templating', 'client');
-  api.use('semantic:ui', 'client');
 
   api.addFiles('theme.html', 'client');
   api.addFiles('theme.js', 'client');
