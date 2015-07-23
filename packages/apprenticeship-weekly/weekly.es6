@@ -33,6 +33,7 @@ WeeklySchema = {
   mentorId: {
     type: String,
     label: 'Mentor',
+    optional: true,
     autoform: {
       options: function() {
         return Meteor.users.find().map(function(user) {
