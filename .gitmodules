@@ -1,0 +1,3 @@
+[submodule "packages/headquarters-meteor"]
+	path = packages/headquarters-meteor
+	url = git@github.com:groupbuddies/headquarters-meteor.gitss

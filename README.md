@@ -1,6 +1,25 @@
 Apprenticeship App
 ==================
 
+Getting Started
+---------------
+
+Before running meteor create a file `settings.json` in the root of the project with the following structure:
+
+{
+  "headquarters": {
+    "appId": "",
+    "secret": ""
+  },
+  "email": {
+    "username": "",
+    "password": ""
+  }
+}
+
+Remember to fill in the settings with the correct information.
+To start the application run `meteor --settings settings.json`.
+
 API
 ---
 
