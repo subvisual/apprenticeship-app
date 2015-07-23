@@ -11,7 +11,7 @@ Package.onUse(function(api) {
 
   api.use('gabrielpoca:headquarters');
 
-  api.addFiles('headquarters.js');
+  api.addFiles('headquarters.js', ['server']);
 
   api.export('HeadquartersClient');
 });

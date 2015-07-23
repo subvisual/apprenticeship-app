@@ -6,12 +6,8 @@
 
 meteor-platform
 aldeed:collection2
-gabrielpoca:accounts-headquarters
 nimble:restivus
-semantic:ui
-flemay:less-autoprefixer
 jparker:gravatar
-iandouglas:accounts-ui-semantic-ui
 gabrielpoca:state-machine
 email
 matb33:collection-hooks
@@ -22,9 +18,14 @@ grigio:babel
 meteorhacks:flow-layout
 reactive-var
 momentjs:moment
-fabienb4:autoform-semantic-ui
 aldeed:autoform
 apprenticeship:apprentices
 apprenticeship:applications
 apprenticeship:weekly
 zimme:active-route
+percolate:synced-cron
+gabrielpoca:headquarters
+apprenticeship:headquarters
+gabrielpoca:accounts-headquarters
+apprenticeship:theme
+flemay:less-autoprefixer
