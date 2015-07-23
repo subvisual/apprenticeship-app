@@ -23,7 +23,10 @@ Template.DetailedApprentice.helpers({
 
     if (user)
       return user.profile.name;
-  }
+  },
+  prettyDate: function(date) {
+    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
+  },
 });
 
 Template.DetailedApprentice.events({
