@@ -1,5 +1,5 @@
-Template.customLogout.events({
-  'click button': function() {
+Template.menuLogoutButton.events({
+  'click': function() {
     Meteor.logout();
   }
 });
