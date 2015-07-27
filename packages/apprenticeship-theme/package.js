@@ -14,4 +14,20 @@ Package.onUse(function(api) {
 
   api.addFiles('theme.html', 'client');
   api.addFiles('theme.js', 'client');
+
+  // add semantic ui files from dist
+  api.addFiles([
+    'semantic-ui/semantic.min.css',
+    'semantic-ui/semantic.min.js',
+    'semantic-ui/themes/basic/assets/fonts/icons.eot',
+    'semantic-ui/themes/basic/assets/fonts/icons.svg',
+    'semantic-ui/themes/basic/assets/fonts/icons.ttf',
+    'semantic-ui/themes/basic/assets/fonts/icons.woff',
+    'semantic-ui/themes/default/assets/fonts/icons.eot',
+    'semantic-ui/themes/default/assets/fonts/icons.svg',
+    'semantic-ui/themes/default/assets/fonts/icons.ttf',
+    'semantic-ui/themes/default/assets/fonts/icons.woff',
+    'semantic-ui/themes/default/assets/fonts/icons.woff2',
+    'semantic-ui/themes/default/assets/images/flags.png',
+  ], 'client');
 });

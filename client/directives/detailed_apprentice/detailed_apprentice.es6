@@ -49,7 +49,7 @@ Template.DetailedApprentice.helpers({
       { sort: { weekNumber: 1 }}
     );
   },
-  userNameForId: function(id) {
+  usernameForId: function(id) {
     var user = Meteor.users.findOne(id);
 
     if (user)
