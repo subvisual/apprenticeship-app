@@ -23,6 +23,11 @@ Template.DetailedApprentice.helpers({
   calendarOptions: function() {
     return {
       id: 'weeklyCalendar',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay'
+      },
       events: function(start, end, timezone, callback) {
         var weekly = Weekly.find({ apprenticeId: FlowRouter.getParam('id') });
 
@@ -54,6 +59,9 @@ Template.DetailedApprentice.helpers({
       { apprenticeId: FlowRouter.getParam('id') },
       { sort: { weekNumber: 1 }}
     );
+  },
+  hasWeekly: function() {
+    return Weekly.find({ apprenticeId: FlowRouter.getParam('id') }).count() != 0;
   },
   usernameForId: function(id) {
     var user = Meteor.users.findOne(id);

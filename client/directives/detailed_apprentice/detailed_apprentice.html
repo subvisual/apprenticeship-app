@@ -12,26 +12,31 @@
 
     {{#if selectedTab 'detailed'}}
       {{#if Template.subscriptionsReady}}
-        {{#each weekly}}
-        <div class="ui vertical segment">
-          <div class="ui header">
-            Week {{ weekNumber }}
+        {{#if hasWeekly}}
+          <div class="ui segment">
+              {{#each weekly}}
+              <div class="ui vertical segment">
+                <div class="ui header">
+                  Week {{ weekNumber }}
+                  <div class="sub header">
+                    {{ prettyDate startedAt }}
+                  </div>
+                </div>
+                <p class="ui red"><b>Mentor: </b>{{ usernameForId mentorId }}</p>
+                <p>{{ details }}</p>
+
+                {{#newWeekly buttonClasses='red basic' doc=this}}
+                  Edit
+                {{/newWeekly}}
+
+                <button class="ui red basic button remove">
+                  Remove
+                </button>
+              </div>
+              {{/each}}
           </div>
-          <p><b>Starts at: </b>{{ prettyDate startedAt }}</p>
-          <p><b>Mentor: </b>{{ usernameForId mentorId }}</p>
-          <p>{{ details }}</p>
-
-          {{#newWeekly buttonClasses='red basic' doc=this}}
-            Edit
-          {{/newWeekly}}
-
-          <button class="ui red basic button remove">
-            Remove
-          </button>
-        </div>
-        {{/each}}
+        {{/if}}
       {{/if}}
-
       {{#if Template.subscriptionsReady}}
         <div class="ui vertical segment">
           {{#newWeekly doc=defaultDoc buttonClasses='fluid'}}
