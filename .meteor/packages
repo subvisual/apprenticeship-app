@@ -23,7 +23,6 @@ apprenticeship:applications
 apprenticeship:weekly
 zimme:active-route
 percolate:synced-cron
-gabrielpoca:headquarters
 apprenticeship:headquarters
 gabrielpoca:accounts-headquarters
 apprenticeship:theme
@@ -31,3 +30,4 @@ flemay:less-autoprefixer
 rzymek:fullcalendar
 velocity:console-reporter
 nimble:restivus
+gabrielpoca:headquarters
