@@ -5,9 +5,6 @@ Template.Apprentices.onCreated(function() {
 Template.Apprentices.helpers({
   apprentices: function() {
     return Apprentices.find();
-  },
-  prettyDate: function(date) {
-    return moment(date).format('DD/MM/YYYY');
   }
 });
 

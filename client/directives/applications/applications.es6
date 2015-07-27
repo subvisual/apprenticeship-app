@@ -21,9 +21,6 @@ Template.Applications.helpers({
   pictureForApplication: function(application) {
     return application.pictureUrl || 'http://placehold.it/200x200';
   },
-  prettyDate: function(date) {
-    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-  },
   applicationExtraClass: function(application) {
     if (application.deleted)
       return 'disabled';

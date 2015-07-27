@@ -63,9 +63,6 @@ Template.DetailedApprentice.helpers({
     else
       return 'No mentor assigned';
   },
-  prettyDate: function(date) {
-    return moment(date).format('MMMM Do YYYY, h:mm:ss a');
-  },
   selectedTab: function(tab) {
     return Template.instance().selectedTab.get() == tab;
   },
