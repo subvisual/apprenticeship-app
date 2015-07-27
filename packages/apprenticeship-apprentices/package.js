@@ -16,3 +16,16 @@ Package.onUse(function(api) {
   api.export('Apprentices');
   api.export('ApprenticesSchema');
 });
+
+Package.onTest(function(api) {
+  api.use([
+    'mike:mocha-package@0.5.7',
+    'practicalmeteor:chai@2.1.0_1'
+  ]);
+
+  api.use('apprenticeship:apprentices');
+
+  api.addFiles([
+    'apprentices_test.js'
+  ], 'server');
+});
