@@ -9,4 +9,4 @@ before_install:
 - tar xvf secrets.tar
 services: mongodb
 script:
-- meteor --test --release velocity:METEOR@1.1.0.2_3 --settings settings.json
+- meteor test-packages --velocity
