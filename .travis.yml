@@ -3,10 +3,10 @@ language: node_js
 node_js:
 - '0.12'
 before_install:
+- curl https://install.meteor.com/ | sh
 - openssl aes-256-cbc -K $encrypted_40eb2fdaab67_key -iv $encrypted_40eb2fdaab67_iv
   -in secrets.tar.enc -out secrets.tar -d
-- curl https://install.meteor.com/ | sh
 - tar xvf secrets.tar
 services: mongodb
 script:
-- meteor test-packages --velocity
+- meteor test-packages --velocity --settings settings.json
