@@ -11,6 +11,7 @@ Package.onUse(function(api) {
 
   api.use('aldeed:collection2');
   api.use('grigio:babel');
+  api.use('dburles:collection-helpers@1.0.3');
 
   api.addFiles('weekly.es6');
   api.addFiles('exports.js');

@@ -1,5 +1,11 @@
 Weekly = new Meteor.Collection('weekly');
 
+Weekly.helpers({
+  hasMentor: function() {
+    return !!this.mentorId;
+  }
+});
+
 WeeklySchema = {
   apprenticeId: {
     type: String

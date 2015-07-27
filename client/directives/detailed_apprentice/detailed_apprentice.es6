@@ -63,27 +63,19 @@ Template.DetailedApprentice.helpers({
   hasWeekly: function() {
     return Weekly.find({ apprenticeId: FlowRouter.getParam('id') }).count() != 0;
   },
-  usernameForId: function(id) {
-    var user = Meteor.users.findOne(id);
-
-    if (user)
-      return user.profile.name;
-    else
-      return 'No mentor assigned';
-  },
   selectedTab: function(tab) {
     return Template.instance().selectedTab.get() == tab;
   },
   activeIfTab: function(tab) {
     if (Template.instance().selectedTab.get() == tab)
       return 'active';
+  },
+  mentorForWeekly: function() {
+    return Meteor.users.findOne(this.mentorId);
   }
 });
 
 Template.DetailedApprentice.events({
-  'click .button.remove': function(e, tpl) {
-    Meteor.call('removeWeekly', this._id);
-  },
   'click #tab-detailed': function(e, tpl) {
     tpl.selectedTab.set('detailed');
   },

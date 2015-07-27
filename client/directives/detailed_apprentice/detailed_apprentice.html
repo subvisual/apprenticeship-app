@@ -14,26 +14,9 @@
       {{#if Template.subscriptionsReady}}
         {{#if hasWeekly}}
           <div class="ui segment">
-              {{#each weekly}}
-              <div class="ui vertical segment">
-                <div class="ui header">
-                  Week {{ weekNumber }}
-                  <div class="sub header">
-                    {{ prettyDate startedAt }}
-                  </div>
-                </div>
-                <p class="ui red"><b>Mentor: </b>{{ usernameForId mentorId }}</p>
-                <p>{{ details }}</p>
-
-                {{#newWeekly buttonClasses='red basic' doc=this}}
-                  Edit
-                {{/newWeekly}}
-
-                <button class="ui red basic button remove">
-                  Remove
-                </button>
-              </div>
-              {{/each}}
+            {{#each weekly}}
+              {{> weeklyItem weekly=this mentor=mentorForWeekly}}
+            {{/each}}
           </div>
         {{/if}}
       {{/if}}

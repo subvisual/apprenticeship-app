@@ -1,0 +1,26 @@
+<template name="weeklyItem">
+  <div class="ui vertical segment">
+    <div class="ui header">
+      Week {{ weekly.weekNumber }}
+      <div class="sub header">
+        {{ prettyDate startedAt }}
+      </div>
+    </div>
+
+    {{#if weekly.hasMentor}}
+      <p><b>Mentor: </b>{{ mentor.profile.name }}</p>
+    {{else}}
+      <p><div class="ui small red label">No mentor assigned</div></p>
+    {{/if}}
+
+    <p>{{ details }}</p>
+
+    {{#newWeekly buttonClasses='red basic' doc=weekly}}
+      Edit
+    {{/newWeekly}}
+
+    <button class="ui red basic button remove">
+      Remove
+    </button>
+  </div>
+</template>
