@@ -29,11 +29,16 @@ To start the application run `meteor --settings settings.json`.
 API
 ---
 
-This application allows others to submit user applications trough an API.
+Part of the responsability of the apprenticeship-app is to expose an api for the rest of the company's applications to use.
+The purpose of this api is to save applications.
 
-METHOD: `POST`
-URL: `HOST_URL/api/applications`
-JSON_DATA:
+There is only one endpoint available at the moment.
+The following is the accepted method and url followed by the json object it recognises.
+
+```
+METHOD: POST
+URL: HOST_URL/api/applications
+```
 
 ```json
 {
@@ -50,11 +55,11 @@ JSON_DATA:
 }
 ```
 
-Changing the settings.json
+Changing the Settings
 --------------------------
 
-After changing the settings.json file you need to recompile `secrets.tar.enc`.
-You need to first install travis cli:
+After changing the `settings.json` file you need to recompile `secrets.tar.enc`, so that travis doesn't break when testing.
+First install travis cli:
 
 ```
 get install travis
@@ -81,4 +86,5 @@ travis encrypt-file secrets.tar --add
 Make sure there isn't a duplication with the openssl command in `.travis.yml`.
 Figure out what changed and remove accordingly.
 
-Commit both `.travis.yml` and `.secrets.tar.enc`. ``NEVER``commit the `secrets.tar`file.
+Commit both `.travis.yml` and `.secrets.tar.enc`.
+**NEVER** commit the `secrets.tar` file.
