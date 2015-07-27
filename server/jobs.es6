@@ -5,7 +5,7 @@ SyncedCron.config({
 SyncedCron.add({
   name: 'Check if there aren\' any mentors missing.',
   schedule: function(parser) {
-    return parser.recur().every(120).minute();
+    return parser.text('every 2 hours');
   },
   job: function() {
     _.each(Weekly.find({}).fetch(), function(weekly) {
