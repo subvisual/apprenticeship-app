@@ -1,4 +1,7 @@
 Template.DetailedApprentice.onCreated(function() {
+  // allowed values are 'detailed' and 'weekly';
+  this.selectedTab = new ReactiveVar('detailed');
+
   this.autorun(() => {
     this.subscribe('users');
     this.subscribe('apprentice', FlowRouter.getParam('id'));
@@ -14,6 +17,9 @@ Template.DetailedApprentice.onRendered(function() {
 });
 
 Template.DetailedApprentice.helpers({
+  apprentice: function() {
+    return Apprentices.findOne(FlowRouter.getParam('id'));
+  },
   calendarOptions: function() {
     return {
       id: 'weeklyCalendar',
@@ -60,10 +66,23 @@ Template.DetailedApprentice.helpers({
   prettyDate: function(date) {
     return moment(date).format('MMMM Do YYYY, h:mm:ss a');
   },
+  selectedTab: function(tab) {
+    return Template.instance().selectedTab.get() == tab;
+  },
+  activeIfTab: function(tab) {
+    if (Template.instance().selectedTab.get() == tab)
+      return 'active';
+  }
 });
 
 Template.DetailedApprentice.events({
   'click .button.remove': function(e, tpl) {
     Meteor.call('removeWeekly', this._id);
-  }
+  },
+  'click #tab-detailed': function(e, tpl) {
+    tpl.selectedTab.set('detailed');
+  },
+  'click #tab-calendar': function(e, tpl) {
+    tpl.selectedTab.set('calendar');
+  },
 });

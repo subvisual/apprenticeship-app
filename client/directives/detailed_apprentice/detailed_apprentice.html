@@ -5,35 +5,42 @@
       {{ apprentice.name }}
     </h2>
 
-    {{#if Template.subscriptionsReady}}
-      {{#each weekly}}
-      <div class="ui vertical segment">
-        <div class="ui header">
-          Week {{ weekNumber }}
+    <div class="ui secondary pointing menu">
+      <a class="{{activeIfTab 'detailed'}} item" id="tab-detailed">Detailed Report</a>
+      <a class="{{activeIfTab 'calendar'}} item" id="tab-calendar">Calendar</a>
+    </div>
+
+    {{#if selectedTab 'detailed'}}
+      {{#if Template.subscriptionsReady}}
+        {{#each weekly}}
+        <div class="ui vertical segment">
+          <div class="ui header">
+            Week {{ weekNumber }}
+          </div>
+          <p><b>Starts at: </b>{{ prettyDate startedAt }}</p>
+          <p><b>Mentor: </b>{{ usernameForId mentorId }}</p>
+          <p>{{ details }}</p>
+
+          {{#newWeekly buttonClasses='red basic' doc=this}}
+            Edit
+          {{/newWeekly}}
+
+          <button class="ui red basic button remove">
+            Remove
+          </button>
         </div>
-        <p><b>Starts at: </b>{{ prettyDate startedAt }}</p>
-        <p><b>Mentor: </b>{{ usernameForId mentorId }}</p>
-        <p>{{ details }}</p>
+        {{/each}}
+      {{/if}}
 
-        {{#newWeekly buttonClasses='red basic' doc=this}}
-          Edit
-        {{/newWeekly}}
-
-        <button class="ui red basic button remove">
-          Remove
-        </button>
-      </div>
-      {{/each}}
+      {{#if Template.subscriptionsReady}}
+        <div class="ui vertical segment">
+          {{#newWeekly doc=defaultDoc buttonClasses='fluid'}}
+            New Weekly
+          {{/newWeekly}}
+        </div>
+      {{/if}}
+    {{else}}
+      {{> fullcalendar calendarOptions }}
     {{/if}}
-
-    {{#if Template.subscriptionsReady}}
-      <div class="ui vertical segment">
-        {{#newWeekly doc=defaultDoc buttonClasses='fluid'}}
-          New Weekly
-        {{/newWeekly}}
-      </div>
-    {{/if}}
-
-    {{> fullcalendar calendarOptions }}
   </div>
 </template>
