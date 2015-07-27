@@ -2,7 +2,7 @@ Apprenticeship App [![Build Status](https://travis-ci.org/subvisual/apprenticesh
 ==================
 
 <p style="text-align: center">
-  ![.apprenticeship.png](Apprenticeship Logo)
+  <img src=".apprenticeship.png" alt="Apprenticeship Logo">
 </p>
 
 Getting Started
