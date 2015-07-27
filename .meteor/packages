@@ -6,7 +6,6 @@
 
 meteor-platform
 aldeed:collection2
-nimble:restivus
 jparker:gravatar
 gabrielpoca:state-machine
 email
@@ -31,3 +30,4 @@ apprenticeship:theme
 flemay:less-autoprefixer
 rzymek:fullcalendar
 velocity:console-reporter
+nimble:restivus
