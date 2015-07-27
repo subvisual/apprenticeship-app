@@ -1,7 +1,7 @@
 Apprenticeship App [![Build Status](https://travis-ci.org/subvisual/apprenticeship-app.svg)](https://travis-ci.org/subvisual/apprenticeship-app)
 ==================
 
-<p style="text-align: center">
+<p align="center">
   <img src=".apprenticeship.png" alt="Apprenticeship Logo">
 </p>
 
