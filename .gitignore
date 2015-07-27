@@ -1,4 +1,4 @@
 settings.json
 .tern-port
-.secrets.tar
+secrets.tar
 .production/*
