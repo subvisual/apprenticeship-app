@@ -1,5 +1,6 @@
 Apprenticeship App
 ==================
+[![Build Status](https://travis-ci.org/subvisual/apprenticeship-app.svg)](https://travis-ci.org/subvisual/apprenticeship-app)
 
 Getting Started
 ---------------
