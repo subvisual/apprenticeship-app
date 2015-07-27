@@ -49,3 +49,36 @@ JSON_DATA:
     }]
 }
 ```
+
+Changing the settings.json
+--------------------------
+
+After changing the settings.json file you need to recompile `secrets.tar.enc`.
+You need to first install travis cli:
+
+```
+get install travis
+```
+
+After the installation you need to login to travis:
+
+```
+travis login
+```
+
+When you're done start by compressing the settings file:
+
+```
+tar cvf secrets.tar settings.json
+```
+
+When your done encrypt the compressed file
+
+```
+travis encrypt-file secrets.tar --add
+```
+
+Make sure there isn't a duplication with the openssl command in `.travis.yml`.
+Figure out what changed and remove accordingly.
+
+Commit both `.travis.yml` and `.secrets.tar.enc`. ``NEVER``commit the `secrets.tar`file.
