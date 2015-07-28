@@ -28,7 +28,7 @@ StateMachine.defineStates = function(collection, schema, options) {
 
     collection['to' + capitalizedSateName] = changeStateFn;
     collection['find' + capitalizedSateName] = findForState(state);
-    collection['is' + capitalizedSateName] = isState(state);
+    collection['is' + capitalizedSateName] = isState(collection, state);
 
     if (Meteor.isClient) {
       Template.registerHelper('is' + capitalizedSateName, function(application) {
@@ -45,8 +45,9 @@ StateMachine.defineStates = function(collection, schema, options) {
     };
   }
 
-  function isState(state) {
+  function isState(collection, state) {
     return function(obj) {
+      var obj = collection.findOne(obj);
       return obj.state === state;
     };
   }
