@@ -41,6 +41,6 @@ Template.Applications.events({
     Meteor.call('rejectApplication', this._id);
   },
   'click .application.delete': function(e, tpl) {
-    Metoer.call('deleteApplication', this._id);
+    Meteor.call('deleteApplication', this._id);
   }
 });

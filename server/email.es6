@@ -1,4 +1,4 @@
-if (Meteor.settings.email) {
+if (Meteor.settings.email && Meteor.settings.email.username && Meteor.settings.email.username != "") {
   let username = Meteor.settings.email.username;
   let password = Meteor.settings.email.password;
 

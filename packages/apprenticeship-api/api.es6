@@ -1,11 +1,10 @@
 Api = new Restivus({
-  useDefaultAuth: true,
   prettyJson: true
 });
 
 Api.addRoute('applications', {
-  post: {
-    action: function() { return tryAction(insertSubmission, this.bodyParams); }
+  post: function() {
+    return tryAction(insertSubmission, this.bodyParams);
   }
 });
 
@@ -13,15 +12,17 @@ function tryAction(fn, bodyParams) {
   try {
     return fn(bodyParams);
   } catch (e) {
+    console.log(e);
+
     if (e.invalidKeys)
       return invalidKeysHandler(e);
     else
-      console.log(e);
+      return e;
   }
 }
 
 function insertSubmission(params) {
-  let url = gravatarForEmail(params.email);
+  var url = gravatarForEmail(params.email);
 
   if (url)
     _.extend(params, { pictureUrl: url });
