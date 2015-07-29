@@ -1,4 +1,6 @@
 TestCollection = new Meteor.Collection('test');
+var testStates = ['accepted', 'rejected', 'hold' ];
+var testDefaultState ='hold';
 
 TestSchema = {
   details: {
@@ -7,8 +9,8 @@ TestSchema = {
 };
 
 StateMachine.defineStates(TestCollection, TestSchema, {
-  states: ['accepted', 'rejected', 'hold' ],
-  default: 'hold'
+  states: testStates,
+  default: testDefaultState
 });
 
 TestCollection.attachSchema(TestSchema);
@@ -18,7 +20,7 @@ describe('StateMachine', function() {
     TestCollection.remove({});
   });
 
-  it('defines an attribute called "state" on the schema', function() {
+  it('defines an attribute "state" in the schema', function() {
     var collection = {};
     var schema = {};
 
@@ -28,6 +30,18 @@ describe('StateMachine', function() {
     });
 
     expect(schema.state).to.be.a('object');
+  });
+
+  it('defines a default state for the collection', function() {
+    var collection = {};
+    var schema = {};
+
+    StateMachine.defineStates(collection, schema, {
+      states: ['accepted', 'hold'],
+      default: 'hold'
+    });
+
+    expect(schema.state.defaultValue).to.eq('hold');
   });
 
   it('defines the "to", "find" and "is" methods in the collection', function() {
@@ -49,50 +63,35 @@ describe('StateMachine', function() {
     });
   });
 
-  describe('toStateName', function() {
+  describe('toNameState()', function() {
     it('changes the state to "accepted"', function() {
-      var instance = TestCollection.insert({
+      var id = TestCollection.insert({
         state: 'hold',
         details: 'testing'
       });
 
-      TestCollection.toAcceptedState(instance);
+      TestCollection.toAcceptedState(id);
 
-      expect(TestCollection.findOne(instance).state)
+      expect(TestCollection.findOne({ _id: id }).state)
         .to.eq('accepted');
     });
   });
 
-  describe('isStateName', function() {
-    describe('with a full object as an argument', function() {
-      it('checks if it is in the "accepted" state', function() {
-        var instance = TestCollection.insert({
-          details: 'testing'
-        });
-
-        TestCollection.toAcceptedState(instance);
-
-        expect(TestCollection.isAcceptedState(instance))
-          .to.be.true;
+  describe('isNameState()', function() {
+    it('checks if it is in the "accepted" state', function() {
+      var id = TestCollection.insert({
+        details: 'testing'
       });
-    });
 
-    describe('with a partial object as an argument', function() {
-      it('checks if it is in the "accepted" state', function() {
-        var instance = TestCollection.insert({
-          details: 'testing'
-        });
+      TestCollection.toAcceptedState({ _id: id });
 
-        TestCollection.toAcceptedState(instance);
-
-        expect(TestCollection.isAcceptedState({ _id: instance }))
-          .to.be.true;
-      });
+      expect(TestCollection.isAcceptedState({ _id: id }))
+        .to.be.true;
     });
   });
 
   describe('findStateName', function() {
-    it('finds all the items in the "accepted" state', function() {
+    it('returns all the items in the "accepted" state', function() {
       TestCollection.insert({
         details: 'testing'
       });

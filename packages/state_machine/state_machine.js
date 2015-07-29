@@ -47,8 +47,9 @@ StateMachine.defineStates = function(collection, schema, options) {
 
   function isState(collection, state) {
     return function(obj) {
-      var obj = collection.findOne(obj);
-      return obj.state === state;
+      found = collection.findOne({ _id: obj._id });
+
+      return found.state === state;
     };
   }
 };
