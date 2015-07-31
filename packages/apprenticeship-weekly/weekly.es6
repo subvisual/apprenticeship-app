@@ -68,6 +68,8 @@ Weekly.attachSchema(WeeklySchema);
 
 Meteor.methods({
   weekNotPlanned: function(apprenticeId, weekNumber) {
+    if (!this.userId) throw 'Not logged in!';
+
     var weekly = Weekly.find({
       apprenticeId: apprenticeId,
       weekNumber: weekNumber

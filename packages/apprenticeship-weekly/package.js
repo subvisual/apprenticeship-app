@@ -24,13 +24,14 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use([
+    'csauer:accounts-phony',
     'mike:mocha-package@0.5.7',
+    'practicalmeteor:sinon@1.14.1_2',
     'practicalmeteor:chai@2.1.0_1'
   ]);
 
   api.use('apprenticeship:weekly');
 
-  api.addFiles([
-    'weekly_test.js'
-  ], 'server');
+  api.addFiles('tests/test.js');
+  api.addFiles('tests/server.js', 'server');
 });
